@@ -1,11 +1,9 @@
 # graphql-demos
 ## Review of GraphQL functionality, for demos, classes
 
-### Demo 1
+### Demo 1 - users
 
-```javascript
-GraphQL demo
-```
+see notes in user directory
 
 
 Notes from Docs - source - https://graphql.org/learn/:
