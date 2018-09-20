@@ -265,15 +265,71 @@ GET /posts/1/comments?_sort=votes&_order=asc
 * Nearly all data fecthing in GraphQL will be async.
 * We could use Fetch or Axios, we prefer Axios
 * schema.js - Import axios at the top
-* We don't need lodash
-* 
+* Delete lodash import - We don't need lodash any more.
+* Delete static list of users.
+* Delete the existing function inside resolve replace with axios call
+* import axios in schema.js
+*  `return axios.get(`http://localhost:3000/users/${args.id}`)`
+* Next we have to resolve the axios promise with a response
+* `				return axios.get(`http://localhost:3000/users/${args.id}`)
+					.then(resp => resp.data);`
+* Note: we need to use resp.data because it w/o the response nests it below the data property, by doing resp.data we avoid that.
+  
 
+------------------
 
+* Install nodemon - `npm install --save nodemon`
+* Make a new script in package.json called dev - `"dev": "nodemon server.js"`
+* To start server type in `npm run dev`  
+  
+* In db.json add:
+  ```
+  	"companies":[
+		{"id":"1", "name":"Apple", "description":"iphone"},
+		{"id":"2", "name":"Google", "description":"Pixel"},
+		{"id":"3", "name":"Microsoft", "description":"Windows"}
+	]
+  ```
 
+* And edit the existing user to add a companyId
 
+```
+	"users":[
+		{"id":"23","firstName":"Bill","age":40,"companyId":"1"},
+		{"id":"24","firstName":"Mike","age":24,"companyId":"2"},
+		{"id":"25","firstName":"John","age":30,"companyId":"2"}
+	],
+```
+* see: http://localhost:3000/users
+* see: http://localhost:3000/companies
+* List of users from Company 2 - http://localhost:3000/companies/2/users
+  
 
+#### Nested Queries
 
+* Now we need to define our CompanyType for GraphQL in schema.js
+* It is important to put that above UserType, this will be explained later.
+  
+ ```javascript
+ const CompanyType = new GraphQLObjectType({
+	name: 'Company',
+	fields: {
+		id: {type:GraphQLString},
+		name: {type:GraphQLString},
+		description: {type:GraphQLString} 
+	}
+})
+ ``` 
 
+* Now we have to associate with a user
+* We treat Associations between Types as if it were another field.
+* In this case add on "company:" to the fields in UserType
+* So under Usertype it would be:
+  ```javascript
+  		company: {
+			type: CompanyType
+		}
+  ```
 
 
 

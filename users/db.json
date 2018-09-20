@@ -1,7 +1,12 @@
 {
 	"users":[
-		{"id":"23","firstName":"Bill","age":40},
-		{"id":"24","firstName":"Mike","age":24},
-		{"id":"25","firstName":"John","age":30}
+		{"id":"23","firstName":"Bill","age":40,"companyId":"1"},
+		{"id":"24","firstName":"Mike","age":24,"companyId":"2"},
+		{"id":"25","firstName":"John","age":30,"companyId":"2"}
+	],
+	"companies":[
+		{"id":"1", "name":"Apple", "description":"iphone"},
+		{"id":"2", "name":"Google", "description":"Pixel"},
+		{"id":"3", "name":"Microsoft", "description":"Windows"}
 	]
 }
