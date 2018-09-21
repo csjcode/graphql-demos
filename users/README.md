@@ -1,5 +1,17 @@
 ### Demo #1 - Users
 
+--------------------------------
+#### For development:
+
+1. `npm run json:server`
+2. `npm run dev`
+3. http://localhost:3000/
+4. http://localhost:4000/graphql
+5. Query example: http://localhost:4000/graphql?query=query%7B%0A%20%20user(id%3A%2223%22)%7B%0A%20%20%20%20firstName%0A%20%20%7D%0A%7D
+
+
+--------------------------------
+
 #### GraphQL Server Setup
 * npm install --save express express-graphql graphql lodash
 
@@ -254,7 +266,7 @@ GET /posts/1/comments?_sort=votes&_order=asc
   },
 ```
 
-* Now run: `npm json:server`
+* Now run: `npm run json:server`
 * URL: http://localhost:3000/
   
 
